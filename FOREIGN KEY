@@ -28,8 +28,6 @@ ON DELETE CASCADE;
 Linguagem de código:  SQL (linguagem de consulta estruturada)  ( sql )
 Neste tutorial, você aprendeu sobre chaves estrangeiras do PostgreSQL e como usar 
 a restrição de chave estrangeira para criar chaves estrangeiras para uma tabela.
-
-
 -- adicionar uma coluna id integer
 -- tem que preencher essa coluna 1..
 -- remove a primary antiga - film_id
