@@ -1,0 +1,67 @@
+Introdução à instrução INSERT do PostgreSQL
+A INSERTinstrução PostgreSQL permite inserir uma nova linha em uma tabela.
+
+O seguinte ilustra a sintaxe mais básica da INSERTinstrução:
+
+INSERT INTO table_name(column1, column2, …)
+VALUES (value1, value2, …);
+
+Linguagem de código:  SQL (linguagem de consulta estruturada)  ( sql )
+Nesta sintaxe:
+
+Primeiro, especifique o nome da tabela ( table_name) na qual deseja inserir os dados após as
+INSERT INTO palavras-chave e uma lista de colunas separadas por vírgula ( colum1, column2, ....).
+
+Segundo, forneça uma lista de valores separados por vírgula entre parênteses (value1,
+value2, ...)após a VALUESpalavra-chave. As colunas e os valores nas listas de colunas e
+valores devem estar na mesma ordem.
+
+Exemplos de instruções INSERT do PostgreSQL
+A instrução a seguir cria uma nova tabela chamada linkspara demonstração:
+
+DROP TABLE IF EXISTS links;
+
+CREATE TABLE links (
+	id SERIAL PRIMARY KEY,
+	url VARCHAR(255) NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	description VARCHAR (255),
+        last_update DATE
+);
+
+1) PostgreSQL INSERT – Inserindo uma única linha em uma tabela
+A instrução a seguir insere uma nova linha na linkstabela:
+
+INSERT INTO links (url, name)
+VALUES('https://www.postgresqltutorial.com','PostgreSQL Tutorial');
+Linguagem de código:  SQL (linguagem de consulta estruturada)  ( sql )
+A instrução retorna a seguinte saída:
+
+INSERT 0 1
+
+EXEMPLOS:
+INSERT INTO filme Values(1,'O Auto da Compadecida', 'As aventuras de joão Grilo e Chico,
+dois nordestinos pobres que vivem de golpes para sobreviver...',
+'2000',4,14.90,'01:44',50.00,'Muito Bom','Adaptação de: Auto da compadecida por Ariano Suassuna',
+'2023-09-20 09:56:01','É um filme Brasileiro de comédia dramática, lançado em 2000...');
+
+postgres=# select * from filme;
+
+ film_id | título | descrição | ano_lancamento | idioma_id | taxa_aluguel | comprimento | custo_reposição | avaliação | caracteristicas_especiais | ultima_atualização | texto_completo | duracao_contrato
+--------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+------------------
+  2 | O Auto da Compadecida | As aventuras de joão Grilo e Chico, dois nordestinos pobres que vivem de golpes para sobreviver... | 2000 | 2 | 6.90 | 01:44:00 | 50.00 | Muito Bom |
+ Adaptação de: Auto da compadecida por Ariano Suassuna | 2023-09-20 09:56:01 | É um filme Brasileiro de comédia dramática, lançado em 2000...                                                                     |                 
+
+
+
+postgres=# INSERT INTO idioma values(1, 'Inglês','2023-09-20');
+
+postgres=# INSERT INTO film_categoria values(3, 2,'2023-09-19 11:29:07');
+
+postgres=# INSERT INTO categoria values(2, 'Comedia','2023-09-19 11:29:07');
+
+postgres=# INSERT INTO endereco (endereco2) values('qn 122 conjunto 13 lot 03 loja 02');
+
+postgres=# insert into idioma values(4,'Portugues', '023-09-13 10:23:54');
+
+Fonte disponível em: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-insert/.
