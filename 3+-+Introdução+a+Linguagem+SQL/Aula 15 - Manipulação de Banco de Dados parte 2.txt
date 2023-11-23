@@ -1,0 +1,48 @@
+// Aula 14 - Manipulação de Banco de Dados parte 2
+
+> CREATE table A (id integer default 0, teste VARCHAR(10));
+
+> INSERT into A (id, teste) values (null, 'teste2');
+
+> select * from A;
+
+> INSERT into A (teste) values ('teste3');
+
+> select * from A;
+
+> CREATE table AREA2 (DEPTNUM integer, NOME VARCHAR(20), CIDADE VARCHAR(20));
+
+> SELECT * from AREA2;
+
+> INSERT into AREA2 (DEPTNUM,NOME,CIDADE) SELECT DEPTNUM,NOME,CIDADE from AREA where CIDADE in ( 'OSASCO','DIADEMA' );
+
+> SELECT * from AREA2;
+
+> INSERT into AREA2 (DEPTNUM,NOME,CIDADE) SELECT DEPTNUM,NOME,CIDADE from AREA;
+
+> SELECT * from AREA2;Hacker Ético Profissional com Kali Linux 2021
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

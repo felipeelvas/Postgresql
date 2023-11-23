@@ -1,0 +1,36 @@
+// Aula 9 - EXPLAIN ANALYZE
+
+=> EXPLAIN SELECT * FROM categories;
+
+=> EXPLAIN ANALYZE SELECT * FROM categories;
+
+=# EXPLAIN ( ANALYZE ) SELECT * FROM categories ORDER BY title DESC;
+
+=# EXPLAIN (VERBOSE on) SELECT * FROM categories;
+
+=# EXPLAIN (COSTS off) SELECT * FROM categories;
+
+=# EXPLAIN (COSTS on) SELECT * FROM categories;
+
+=# EXPLAIN (ANALYZE on, TIMING off) SELECT * FROM categories;
+
+=# EXPLAIN (ANALYZE, SUMMARY on) SELECT * FROM categories;
+
+=# EXPLAIN (ANALYZE, BUFFERS on) SELECT * FROM categories;
+
+=# EXPLAIN ( FORMAT JSON ) SELECT * FROM categories;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

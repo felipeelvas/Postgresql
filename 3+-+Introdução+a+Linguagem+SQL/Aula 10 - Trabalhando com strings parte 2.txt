@@ -1,0 +1,44 @@
+// Aula 10 - Trabalhando com strings parte 2
+
+> SELECT (length('TESTE1,TESTE2,TESTE3')-length(replace('TESTE1,TESTE2,TESTE3',',','')))/length(',') as vírgulas from TABELA1;
+
+> select NOME, replace( replace( replace( replace( replace(NOME,'A',''),'E',''),'I',''),'O',''),'U','') as resultado1, SALARIO, replace(SALARIO,0,'') resultado2 from FUN;
+
+> SELECT NOME from FUN order by substr(NOME,length(NOME)-1);
+
+> SELECT DEPTNUM, group_concat(NOME order by FUNNUM separator ',') as Colaborador from FUN group by DEPTNUM; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

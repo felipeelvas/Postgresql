@@ -1,0 +1,46 @@
+// Aula 9 - Trabalhando com strings
+
+> SELECT substr(e.NOME,iter.POSICAO,1) as C from (select NOME from FUN where NOME = 'JAIMES') e, (select id as POSICAO from TABELA10) iter where iter.POSICAO <= length(e.NOME);
+
+> SELECT NOME, iter.POSICAO from (SELECT NOME from FUN where NOME = 'JAIMES') e, (SELECT id as POSICAO from TABELA10) iter;
+
+> SELECT NOME, iter.POSICAO from (SELECT NOME from FUN where NOME = 'JAIMES') e, (SELECT id as POSICAO from TABELA10) iter where iter.POSICAO <= length(e.NOME);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

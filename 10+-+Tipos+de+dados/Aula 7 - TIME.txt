@@ -1,0 +1,76 @@
+// Aula 7 - TIME
+
+https://www.postgresql.org/docs/current/datatype-datetime.html
+
+=# CREATE TABLE turnos (
+    id serial PRIMARY KEY,
+    turno_nome VARCHAR NOT NULL,
+    comeca_em TIME NOT NULL,
+    termina_em TIME NOT NULL
+);  
+
+=# INSERT INTO turnos(turno_nome, comeca_em, termina_em)
+VALUES('Manha', '08:00:00', '12:00:00'),
+      ('Tarde', '13:00:00', '17:00:00'),
+      ('Noite', '18:00:00', '22:00:00');
+
+=# SELECT * FROM turnos;
+
+=# SELECT CURRENT_TIME;
+
+=# SELECT CURRENT_TIME(5);
+
+=# SELECT LOCALTIME;
+
+=# SELECT LOCALTIME(0);
+
+=# SELECT LOCALTIME AT TIME ZONE 'UTC-7';
+
+=# SELECT
+    LOCALTIME,
+    EXTRACT (HOUR FROM LOCALTIME) as hour,
+    EXTRACT (MINUTE FROM LOCALTIME) as minute, 
+    EXTRACT (SECOND FROM LOCALTIME) as second,
+    EXTRACT (milliseconds FROM LOCALTIME) as milliseconds; 
+
+=# SELECT time '10:00' - time '02:00' AS result;
+
+=# SELECT LOCALTIME + interval '2 hours' AS result;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

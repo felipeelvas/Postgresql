@@ -1,0 +1,66 @@
+// Aula 10 - JSON
+
+https://pt.wikipedia.org/wiki/JSON
+https://www.postgresql.org/docs/current/datatype-json.html
+https://www.postgresql.org/docs/13/functions-json.html
+https://www.postgresql.org/docs/13/functions-json.html
+
+=# CREATE TABLE pedidos (
+	id serial NOT NULL PRIMARY KEY,
+	info json NOT NULL
+);
+
+=# INSERT INTO pedidos (info) VALUES
+('{ "cliente": "John Doe", "itens": {"produto": "Beer","qnt": 6}}');
+
+=# INSERT INTO pedidos (info) VALUES 
+('{ "cliente": "Lily Bush", "itens": {"produto": "Diaper","qnt": 24}}'),
+('{ "cliente": "Josh William", "itens": {"produto": "Toy Car","qnt": 1}}'),
+('{ "cliente": "Mary Clark", "itens": {"produto": "Toy Train","qnt": 2}}');
+
+=# SELECT info FROM pedidos;
+
+=# SELECT info -> 'cliente' AS cliente FROM pedidos;
+
+=# SELECT info ->> 'cliente' AS cliente FROM pedidos;
+
+=# SELECT info -> 'itens' ->> 'produto' as produto FROM pedidos ORDER BY produto;
+
+=# SELECT info ->> 'cliente' AS cliente FROM pedidos WHERE info -> 'itens' ->> 'produto' = 'Diaper';
+
+=# SELECT info ->> 'cliente' AS cliente, info -> 'itens' ->> 'produto' AS 
+	produto FROM pedidos WHERE CAST ( info -> 'itens' ->> 'qnt' AS INTEGER) = 2;
+
+=# SELECT 
+   MIN (CAST (info -> 'itens' ->> 'qnt' AS INTEGER)),
+   MAX (CAST (info -> 'itens' ->> 'qnt' AS INTEGER)),
+   SUM (CAST (info -> 'itens' ->> 'qnt' AS INTEGER)),
+   AVG (CAST (info -> 'itens' ->> 'qnt' AS INTEGER))
+FROM pedidos;
+
+=# SELECT json_each (info) FROM pedidos;
+
+=# SELECT json_object_keys (info->'itens') FROM pedidos;
+
+=# SELECT json_typeof (info->'itens') FROM pedidos;
+
+=# SELECT json_typeof (info->'itens'->'qnt') FROM pedidos;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

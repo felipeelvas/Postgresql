@@ -1,0 +1,55 @@
+// Aula 4 - Usando o comando SELECT - parte 3
+
+> SELECT * from FUN limit 5;
+
+> SELECT NOME, CARGO from FUN order by rand() limit 5;
+
+> SELECT * from FUN WHERE comissao is null;
+
+> SELECT * from FUN WHERE comissao IS NOT NULL;
+
+> SELECT coalesce(comissao,0) from FUN; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

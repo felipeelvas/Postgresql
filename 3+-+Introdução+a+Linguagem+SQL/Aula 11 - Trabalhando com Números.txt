@@ -1,0 +1,54 @@
+// Aula 11 - Trabalhando com Números
+
+> SELECT avg(SALARIO) as media_salarial from FUN;
+
+> SELECT DEPTNUM, avg(SALARIO) as media_salarial from FUN group by DEPTNUM;
+
+> SELECT min(SALARIO) as Salario_Mínimo, max(SALARIO) as Salario_Máximo from FUN;
+
+> SELECT DEPTNUM, min(SALARIO) as Salario_Mínimo, max(SALARIO) as Salario_Máximo from FUN group by DEPTNUM;
+
+> SELECT DEPTNUM, COMISSAO from FUN where DEPTNUM in (10,30) order by 1;
+
+> SELECT min(COMISSAO), max(COMISSAO) from FUN; 
+
+> SELECT DEPTNUM, min(COMISSAO), max(COMISSAO) from FUN group by DEPTNUM;
+
+> SELECT sum(SALARIO) from FUN;
+
+> SELECT DEPTNUM, sum(SALARIO) as VALOR_TOTAL_DEPTNUM from FUN group by DEPTNUM;
+
+> SELECT DEPTNUM, COMISSAO from FUN where DEPTNUM in (10,30) order by 1;
+
+> SELECT sum(COMISSAO) from FUN; 
+
+> SELECT DEPTNUM, sum(COMISSAO) from FUN where DEPTNUM in (10,30) group by DEPTNUM;
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+// Aula 3 - Boolean
+
+https://www.postgresql.org/docs/current/datatype-boolean.html
+
+=# CREATE TABLE estoque_disponivel (
+   produto_id INT PRIMARY KEY,
+   disponivel BOOLEAN NOT NULL
+);
+
+=# INSERT INTO estoque_disponivel (produto_id, disponivel)
+VALUES (100, TRUE),
+	(200, FALSE),
+	(300, 't'),
+	(400, '1'),
+	(500, 'y'),
+	(600, 'yes'),
+	(700, 'no'),
+	(800, '0');
+
+=# SELECT * FROM estoque_disponivel WHERE disponivel = 'yes';
+
+=# SELECT * FROM estoque_disponivel WHERE disponivel;
+
+=# SELECT * FROM estoque_disponivel WHERE disponivel = 'no';
+
+=# SELECT * FROM estoque_disponivel WHERE NOT disponivel;
+
+=# ALTER TABLE estoque_disponivel ALTER COLUMN disponivel SET DEFAULT FALSE;
+
+=# INSERT INTO estoque_disponivel (produto_id) VALUES (900);
+
+=# SELECT * FROM estoque_disponivel WHERE produto_id = 900;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

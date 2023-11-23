@@ -1,0 +1,96 @@
+// Aula 5 - Partial Index
+
+https://www.postgresql.org/docs/13/indexes-partial.html
+
+=# SELECT
+    customer_id,
+    first_name,
+    last_name,
+    email
+FROM
+    customer
+WHERE
+    active = 0;
+
+=# EXPLAIN SELECT
+    customer_id,
+    first_name,
+    last_name,
+    email
+FROM
+    customer
+WHERE
+    active = 0;
+
+=# CREATE INDEX idx_cliente_ativo ON customer(active);
+
+=# EXPLAIN SELECT
+    customer_id,
+    first_name,
+    last_name,
+    email
+FROM
+    customer
+WHERE
+    active = 0;
+
+=# drop index idx_cliente_ativo;
+
+=# CREATE INDEX idx_cliente_inativo ON customer(active) WHERE active = 0;
+
+=# EXPLAIN SELECT
+    customer_id,
+    first_name,
+    last_name,
+    email
+FROM
+    customer
+WHERE
+    active = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

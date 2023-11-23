@@ -1,0 +1,109 @@
+// Aula 2 - Constraints UNIQUE
+
+=# CREATE TABLE produtos4 (
+	cod_prod int UNIQUE,
+	nome text,
+	preco numeric
+);
+
+=# \d produtos4;
+
+=# CREATE TABLE produtos6 (
+	cod_prod integer CONSTRAINT unq_cod_prod UNIQUE,
+	nome text,
+	preco numeric
+);
+
+=# \d produtos6;
+
+=# CREATE TABLE Alunos3 (
+  ID_Aluno int,
+  Nome_Aluno text NOT NULL,
+  CPF text UNIQUE,
+  Idade numeric
+);
+
+=# \d Alunos3;
+
+=# INSERT INTO Alunos3(
+	ID_Aluno,
+	Nome_Aluno,
+	CPF,
+	Idade
+) VALUES (
+	1,
+	'Vitor',
+	'333.333.333.33',
+	'27'
+);
+
+=# select * from Alunos3;
+
+=# INSERT INTO Alunos3(
+	ID_Aluno,
+	Nome_Aluno,
+	CPF,
+	Idade
+) VALUES (
+	1,
+	'Vitor2',
+	'333.333.333.33',
+	'18'
+);
+
+=# CREATE TABLE Alunos4 (
+  ID_Aluno int,
+  Nome_Aluno text NOT NULL,
+  CPF text,
+  Idade numeric,
+  UNIQUE (CPF)
+);
+
+=# \d Alunos4;
+
+=# CREATE TABLE Alunos5 (
+  ID_Aluno int,
+  Nome_Aluno text NOT NULL,
+  Hora_Matrícula timestamp default current_timestamp,
+  CPF text UNIQUE,
+  Idade numeric,
+  UNIQUE (Nome_Aluno, Hora_Matrícula)
+);
+
+=# \d Alunos5;
+
+=# INSERT INTO Alunos5(
+	ID_Aluno,
+	Nome_Aluno,
+	CPF,
+	Idade
+) VALUES (
+	1,
+	'Vitor',
+	'333.333.333.33',
+	'27'
+);
+
+=# select * from Alunos5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

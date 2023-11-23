@@ -1,0 +1,104 @@
+// Aula 11 - hstore
+
+https://www.postgresql.org/docs/current/hstore.html
+
+=# CREATE EXTENSION IF NOT EXISTS hstore;
+
+=# CREATE TABLE livros (
+	id serial primary key,
+	titulo VARCHAR (255),
+	attr hstore
+);
+
+=# INSERT INTO livros (titulo, attr)
+VALUES (
+		'Banco de dados PostgreSQL',
+		'"brochura" => "455",
+	   "editora" => "postgresql.org",
+	   "idioma"  => "English",
+	   "ISBN-13"   => "151565416510",
+		 "peso"    => "11.2 kilos"'
+	);
+
+=# INSERT INTO livros (titulo, attr)
+VALUES (
+		'PostgreSQL Cheat Sheet',
+		' "brochura" => "5",
+"editora" => "postgresql.org",
+"idioma"  => "English",
+"ISBN-13"   => "668-9816516011",
+"peso"    => "1 kilos" '
+	);
+
+=# SELECT attr FROM livros;
+
+=# SELECT attr -> 'ISBN-13' AS isbn FROM livros;
+
+=# SELECT titulo, attr -> 'peso' AS peso 
+FROM
+	livros
+WHERE
+	attr -> 'ISBN-13' = '668-9816516011';
+
+=# UPDATE livros SET attr = attr || '"entregagratis"=>"yes"' :: hstore;
+
+=# SELECT
+	titulo,
+        attr -> 'entregagratis' AS entregagratis
+FROM
+	livros;
+
+=# UPDATE livros SET attr = attr || '"entregagratis"=>"no"' :: hstore;
+
+=# UPDATE livros SET attr = delete(attr, 'entregagratis');
+
+=# SELECT
+  titulo,
+  attr->'editora' as editora,
+  attr
+FROM
+	livros
+WHERE
+	attr ? 'editora';
+
+=# SELECT titulo FROM livros WHERE
+	attr @> '"peso"=>"11.2 kilos"' :: hstore;
+
+=# SELECT titulo FROM livros WHERE
+	attr ?& ARRAY [ 'idioma', 'peso' ];
+
+=# SELECT akeys (attr) FROM livros;
+
+=# SELECT skeys (attr) FROM livros;
+
+=# SELECT avals (attr) FROM livros;
+
+=# SELECT svals (attr) FROM livros;
+
+=# SELECT titulo, hstore_to_json (attr) json FROM livros;
+
+=# SELECT titulo, (EACH(attr) ).* FROM livros;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

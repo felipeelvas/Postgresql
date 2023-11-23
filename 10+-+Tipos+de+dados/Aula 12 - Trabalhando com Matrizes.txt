@@ -1,0 +1,50 @@
+// Aula 12 - Trabalhando com Matrizes
+
+https://www.postgresql.org/docs/current/functions-array.html
+
+test=# SELECT ARRAY[2001, 2002, 2003] As yrs;
+
+test=# SELECT '{Alex,Sonia}'::text[] As name, '{46,43}'::smallint[] As age;
+
+test=# SELECT string_to_array('CA.MA.TX', '.') As estados;
+
+test=# SELECT array_agg(f.t)
+	FROM ( VALUES ('{Alex,Sonia}'::text[]),
+	('{46,43}'::text[] ) ) As f(t);
+
+test=# SELECT unnest('{XOX,OXO,XOX}'::char(3)[]) As tic_tac_toe;
+
+test=# SELECT unnest('{three,blind,mice}'::text[]) As t,
+	unnest('{1,2,3}'::smallint[]) As i;
+
+test=# SELECT unnest( '{blind,mouse}'::varchar[]) AS v,
+	unnest('{1,2,3}'::smallint[]) AS i;
+
+test=# SELECT * FROM unnest('{blind,mouse}'::text[], '{1,2,3}'::int[]) AS f(t,i);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+// Aula 7 - Junções de tabelas
+
+> SELECT NOME, DEPTNUM from FUN where DEPTNUM = 10 union all select '----------', null from TABELA1 union all select NOME, DEPTNUM from AREA;
+
+> SELECT DEPTNUM from FUN union SELECT DEPTNUM from AREA;
+
+> select f.NOME, a.CIDADE from FUN f, AREA a where f.DEPTNUM = a.DEPTNUM and f.DEPTNUM = 10;
+
+> SELECT f.NOME, a.CIDADE, f.DEPTNUM as FUN_DEPTNUM, a.DEPTNUM as AREA_DEPTNUM from FUN f, AREA a where f.DEPTNUM = 10;
+
+> SELECT f.NOME, a.CIDADE from FUN f inner join AREA a on (f.DEPTNUM = a.DEPTNUM) where f.DEPTNUM =
+ 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

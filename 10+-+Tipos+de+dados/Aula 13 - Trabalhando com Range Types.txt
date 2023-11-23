@@ -1,0 +1,58 @@
+// Aula 13 - Trabalhando com Range Types
+
+https://www.postgresql.org/docs/current/rangetypes.html
+
+test=# SELECT '[2020-01-05,2020-08-13]'::daterange;
+
+test=# SELECT '(2020-01-05,2020-08-13]'::daterange;
+
+test=# SELECT '(0,)'::int8range;
+
+test=# SELECT '(2020-01-05 10:00,2020-08-13 14:00]'::tsrange;
+
+test=# SELECT daterange('2020-01-05','infinity','[]');
+
+test=# CREATE TABLE employment (id serial PRIMARY KEY, employee varchar(20),
+period daterange);
+
+test=# CREATE INDEX ix_employment_period ON employment USING gist (period);
+
+test=# INSERT INTO employment (employee,period) VALUES ('Alex','[2012-04-24, infinity)'::daterange),
+('Sonia','[2011-04-24, 2012-06-01)'::daterange),
+('Leo','[2012-06-20, 2013-04-20)'::daterange),
+('Regina','[2012-06-20, 2013-04-20)'::daterange);
+
+https://www.postgresql.org/docs/current/functions-range.html#RANGE-OPERATORS-TABLE
+
+test=# SELECT e1.employee, string_agg(DISTINCT e2.employee, ', ' 
+ORDER BY e2.employee) As colleagues
+FROM employment As e1 INNER JOIN employment As e2
+ON e1.period && e2.period
+WHERE e1.employee <> e2.employee
+GROUP BY e1.employee;
+
+test=# SELECT employee FROM employment WHERE period @> CURRENT_DATE GROUP BY employee;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

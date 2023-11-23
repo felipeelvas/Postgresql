@@ -1,0 +1,67 @@
+// Aula 14 - Jsonb
+
+https://www.postgresql.org/docs/current/functions-json.html
+
+=# CREATE TABLE familias_b (id serial PRIMARY KEY, profile jsonb);
+
+=# INSERT INTO familias_b (profile) VALUES (
+	'{"nome":"Joao", "membros":[
+	{"membro":{"relation":"pai", "nome":"Alex"}},
+	{"membro":{"relation":"mae", "nome":"Sonia"}},
+	{"membro":{"relation":"filho", "nome":"Brandon"}},
+	{"membro":{"relation":"filha", "nome":"Azaleah"}}
+	]}');
+
+=# SELECT profile As b FROM familias_b WHERE id = 1;
+
+=# SELECT profile->>'nome' As familia FROM familias_b WHERE profile @> '{"membros":[{"membro":{"nome":"Alex"} }]}';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

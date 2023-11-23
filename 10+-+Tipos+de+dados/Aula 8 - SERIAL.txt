@@ -1,0 +1,78 @@
+// Aula 8 - SERIAL
+
+https://www.postgresql.org/docs/current/datatype-numeric.html#DATATYPE-SERIAL
+https://www.postgresql.org/docs/current/functions-info.html
+
+=# CREATE TABLE frutas(
+   	id SERIAL PRIMARY KEY,
+   	nome VARCHAR NOT NULL
+);	
+
+=# INSERT INTO frutas(nome) VALUES('Laranja');
+
+=# INSERT INTO frutas(id,nome) VALUES(DEFAULT,'Maca');
+
+=# SELECT * FROM frutas;
+
+=# SELECT currval(pg_get_serial_sequence('frutas', 'id'));
+
+=# INSERT INTO frutas(nome) VALUES('Banana') RETURNING id;
+
+=# SELECT * FROM frutas;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

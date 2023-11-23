@@ -1,0 +1,69 @@
+// Aula 1 - CREATE INDEX
+
+dvdrental=# \dt;
+
+=# \d address;
+
+=# SELECT * FROM address
+	WHERE phone = '223664661973';
+
+=# EXPLAIN SELECT *
+	FROM address
+	WHERE phone = '223664661973';
+
+=# CREATE INDEX idx_address_phone ON address(phone);
+
+=# EXPLAIN SELECT *
+	FROM address
+	WHERE phone = '223664661973';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

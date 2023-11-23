@@ -1,0 +1,100 @@
+// Aula 10 - Criando um fuzzy search com pg_trgm
+
+Nessa aula, vamos falar sobre o "fuzzy search", ou seja, quando o usuário executar pesquisas precisas, podem aparecer dados parecidos, semelhantes, também.
+
+Se você por exemplo, pesquisar no Google, quase sempre haverá uma resposta para tudo o que vc for buscar lá, mesmo se a busca do usuário estiver errada, com erros de digitação ou simplesmente com palavras nada a ver. 
+
+As pessoas esperam encontrar os resultados, independentemente das informações que eles colocaram (dados de entrada) forem errados.
+
+Para criar essas pesquisas, chamadas de "pesquisas difusas" com o PostgreSQL, devemos trabalhar com a extensão "pg_trgm". 
+
+Para ativar esta extensão, basta executar o seguinte comando:
+
+test=# CREATE EXTENSION pg_trgm;
+
+E criar uma tabela com nomes diferentes neles:
+
+test=# CREATE TABLE t_location (name text);
+
+test=# COPY t_location FROM PROGRAM
+	'curl https://web.archive.org/web/20200323144512/https://www.cybertec-postgresql.com/secret/orte.txt';
+
+Agora, vamos ver o seu resultado:
+
+test=# SELECT * FROM t_location LIMIT 4;
+
+Se o alemão não for sua língua materna, será impossível soletrar os nomes desses locais sem erros graves. 
+
+O "pg_trgm" fornece um operador de distância que calcula a distância entre dois strings:
+
+test=# SELECT 'abcde' <-> 'abdeacb';
+
+A distância é um número entre 0 e 1. 
+
+Quanto menor o número, mais semelhantes são as duas strings.
+
+Como é que isso funciona? Os trigramas pegam uma string e a dissecam em seqüências de três caracteres cada:
+
+test=# SELECT show_trgm('abcdef');
+
+Essas seqüências serão usadas para aumentar a distância que você acabou de ver. 
+
+Obviamente, o operador de distância pode ser usado dentro de uma consulta para encontrar a correspondência mais próxima do que foi solicitado:
+
+test=# SELECT * FROM t_location
+	ORDER BY name <-> 'Kramertneusiedel'
+	LIMIT 4;
+
+"Gramatneusiedl" está bem perto de "Kramertneusiedel". Parece semelhante, e usar um K em vez de um G é um erro bastante comum. 
+
+No Google, você às vezes verá "Você quis dizer". 
+
+É bem provável que o Google esteja usando n-gramas aqui para fazer isso. 
+
+No PostgreSQL, é possível usar o GiST para indexar no texto usando trigramas:
+
+test=# CREATE INDEX idx_trgm ON t_location
+	USING GiST(name GiST_trgm_ops);
+
+O "pg_trgm" nos fornece a classe de operador "GiST_trgm_ops", projetada para fazer pesquisas de similaridade.
+
+O código a seguir mostra que o índice é usado conforme o esperado:
+
+test=# explain SELECT *
+	FROM t_location ORDER BY name <-> 'Kramertneusiedel'
+	LIMIT 6;
+
+As consultas com o LIKE definitivamente causam alguns dos piores problemas de desempenho enfrentados por pessoas em todo o mundo atualmente. 
+
+Na maioria dos sistemas de banco de dados, o LIKE é bem lento e requer uma varredura seqüencial. 
+
+Além disso, os usuários finais descobrem rapidamente que uma pesquisa difusa, em muitos casos, retornará melhores resultados do que consultas precisas. 
+
+Um único tipo de consulta LIKE em uma tabela grande pode, portanto, prejudicar o desempenho de um servidor de banco de dados inteiro se for chamado com bastante frequência.
+
+Felizmente, o PostgreSQL oferece uma solução para esse problema, e a solução já está instalada:
+
+test=# explain SELECT * FROM t_location WHERE name LIKE '%neusi%';
+
+O índice trigrama implantado na seção anterior também é adequado para acelerar o LIKE. Observe que os símbolos de porcentagem (%) podem ser usados em qualquer ponto da string de pesquisa. 
+
+Essa é uma grande vantagem sobre as "B-trees" padrão, que por acaso aceleram os curingas no final da consulta.
+
+test=# explain SELECT * FROM t_location WHERE name LIKE '%neusi%';
+
+O índice trigrama implantado na seção anterior também é adequado para acelerar o LIKE. Observe que os símbolos% podem ser usados em qualquer ponto da string de pesquisa. 
+
+Essa é uma grande vantagem sobre as árvores B padrão, que por acaso aceleram os curingas no final da consulta.
+
+No entanto, isso ainda não é tudo. Os índices de trigrama são capazes de acelerar expressões regulares simples. O exemplo a seguir mostra como isso pode ser feito:
+
+test=# SELECT * FROM t_location WHERE name ~ '[A-C].*neu.*';
+
+Links de ref:
+
+https://www.postgresql.org/docs/current/pgtrgm.html
+
+
+
+
+
