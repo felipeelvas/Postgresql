@@ -1,0 +1,168 @@
+
+
+
+
+INSERT INTO funcionario Values(10, 'Charles','Chaplin',12,'charlesator@email.com',15,true,'c_chaplin','senha','2023-09-15 21:00:07','foto');
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 1 | rita     | rt      | 70686080 | sqnw 107        | Noroestefilm_id |         titulo          |                     descricao                     | ano_lancamento | idioma  | taxa_aluguel | comprimento | custo_reposicao | avaliacao |   caracteristicas_especiais    | data_ultima_atualizacao |                                                                                 texto_completo                                                                                 | duracao_contrato 
+---------+-------------------------+---------------------------------------------------+----------------+---------+--------------+-------------+-----------------+-----------+--------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------
+       3 | O ILUMINADO-THE SHINING | A história conta sobre um escritor, Jack Torrence |           1980 | ENGLISH |        10.90 | 02:33:02    |           50.00 | Regular   | Ação, terror, suspense, outros | 2023-09-13 08:23:54     | SINOPSE                                                                                                                                                                       +|               24
+         |                         |                                                   |                |         |              |             |                 |           |                                |                         | Durante o inverno, um homem (Jack Nicholson) é contratado para ficar como vigia em um hotel no Colorado e vai para lá com a mulher (Shelley Duvall) e seu filho (Danny Lloyd). | 
+(1 row)
+
+Descreva uma tabela
+Para descrever uma tabela como coluna, tipo, modificadores de colunas, etc., você usa o seguinte comando:
+
+\d table_name
+
+\d categoria
+                                                   Table "public.categoria"
+         Column          |            Type             | Collation | Nullable |                    Default                     
+-------------------------+-----------------------------+-----------+----------+------------------------------------------------
+ categoria_id            | integer                     |           | not null | nextval('cateoria_categoria_id_seq'::regclass)
+ nome                    | character varying(50)       |           | not null | 
+ data_ultima_atualizacao | timestamp without time zone |           | not null | 
+Indexes:
+    "cateoria_pkey" PRIMARY KEY, btree (categoria_id)
+    "cateoria_nome_key" UNIQUE CONSTRAINT, btree (nome)
+
+
+
+
+\d filme
+                                                  Table "public.filme"
+          Column           |            Type             | Collation | Nullable |                Default                
+---------------------------+-----------------------------+-----------+----------+---------------------------------------
+ film_id                   | integer                     |           | not null | nextval('film_film_id_seq'::regclass)
+ titulo                    | character varying(50)       |           | not null | 
+ descricao                 | character varying(50)       |           |          | 
+ ano_lancamento            | integer                     |           | not null | 
+ idioma                    | character varying(50)       |           | not null | 
+ taxa_aluguel              | numeric                     |           | not null | 
+ comprimento               | time without time zone      |           | not null | 
+ custo_reposicao           | numeric                     |           | not null | 
+ avaliacao                 | character varying(50)       |           | not null | 
+ caracteristicas_especiais | character varying(255)      |           |          | 
+ data_ultima_atualizacao   | timestamp without time zone |           | not null | 
+ texto_completo            | character varying(255)      |           |          | 
+ duracao_contrato          | integer                     |           |          | 
+Indexes:
+    "film_idioma_key" UNIQUE CONSTRAINT, btree (idioma)
+    "film_titulo_key" UNIQUE CONSTRAINT, btree (titulo)
+
+
+
+postgres@elvas-HP-ProBook-4430s:~$ psql
+psql (14.9 (Ubuntu 14.9-0ubuntu0.22.04.1))
+Type "help" for help.
+
+postgres=# select * from endereco;
+postgres=# \d endereco
+postgres=# \d endereco
+                                                   Table "public.endereco"
+         Column          |            Type             | Collation | Nullable |                    Default                    
+-------------------------+-----------------------------+-----------+----------+-----------------------------------------------
+ endereco_id             | integer                     |           | not null | nextval('endereco_endereco_id_seq'::regclass)
+ endereco                | character varying(255)      |           |          | 
+ distrito                | character varying(255)      |           |          | 
+ cidade_id               | integer                     |           | not null | nextval('endereco_cidade_id_seq'::regclass)
+ cep                     | integer                     |           |          | 
+ telefone                | integer                     |           | not null | 
+ data_ultima_atualizacao | timestamp without time zone |           |          | 
+Indexes:
+    "endereco_telefone_key" UNIQUE CONSTRAINT, btree (telefone)
+
+postgres=# ALTER TABLE endereco  
+ALTER COLUMN telefone TYPE varchar(255) ;
+ALTER TABLE
+postgres=# select * from endereco;
+ endereco_id |              endereco              |   distrito    | cidade_id |   cep    | telefone  | data_ultima_atualizacao 
+-------------+------------------------------------+---------------+-----------+----------+-----------+-------------------------
+          12 | qn 122 conjunto 09 lote 02 apt 201 | samambaia-sul |        13 | 72304109 | 333377777 | 2023-09-18 08:37:00
+(1 row)
+
+postgres=# UPDATE endereco
+SET telefone = '61998138835' 
+WHERE telefone = 333377777;
+ERROR:  operator does not exist: character varying = integer
+LINE 3: WHERE telefone = 333377777;
+                       ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+postgres=# UPDATE endereco
+SET telefone = '61998138835' 
+WHERE telefone;
+ERROR:  argument of WHERE must be type boolean, not type character varying
+LINE 3: WHERE telefone;
+              ^
+postgres=# UPDATE endereco
+SET telefone = '61998138835';
+UPDATE 1
+postgres=# select * from endereco;
+ endereco_id |              endereco              |   distrito    | cidade_id |   cep    |  telefone   | data_ultima_atualizacao 
+-------------+------------------------------------+---------------+-----------+----------+-------------+-------------------------
+          12 | qn 122 conjunto 09 lote 02 apt 201 | samambaia-sul |        13 | 72304109 | 61998138835 | 2023-09-18 08:37:00
+(1 row)
+
+postgres=# 
+
+
+
+-- adicionar uma coluna id integer
+-- tem que preencher essa coluna 1..
+-- remove a primary antiga - film_id
+-- transformar em primary key o id
+
+
+ALTER TABLE filme_categoria
+ADD CONSTRAINT fk_filme_categoria_film_id
+FOREIGN KEY (film_id) REFERENCES filme(film_id);
+
+
+ALTER TABLE film_categoria
+ADD CONSTRAINT fk_film_categoria_film_id 
+FOREIGN KEY (film_id) REFERENCES filme(film_id);
+
+ALTER TABLE film_actor    
+ADD CONSTRAINT fk_film_actor_actor_id 
+FOREIGN KEY (actor_id) REFERENCES actor(actor_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
