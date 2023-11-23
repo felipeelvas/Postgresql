@@ -1,0 +1,60 @@
+// Aula 16 - Manipulação de Banco de Dados parte 3
+
+> SELECT DEPTNUM,NOME,SALARIO from FUN where DEPTNUM = 20 order by 1,3;
+
+> UPDATE FUN set SALARIO = SALARIO*1.10 where DEPTNUM = 20;
+
+> SELECT DEPTNUM,NOME,SALARIO from FUN where DEPTNUM = 20 order by 1,3;
+
+> SELECT DEPTNUM,NOME, SALARIO as SALARIO_INICIAL, SALARIO*.10 as Valor_Somado, SALARIO*1.10 as SALARIO_REAJUSTADO from FUN where DEPTNUM=20;
+
+> CREATE table FUN_2 as SELECT * from FUN;
+
+> SELECT FUNNUM, NOME from FUN_2;
+
+> SELECT FUNNUM, NOME, SALARIO from FUN;
+
+> UPDATE FUN set SALARIO=SALARIO*1.30 where FUNNUM in ( select FUNNUM from FUN_2 );
+
+> SELECT FUNNUM, NOME, SALARIO from FUN;
+
+> UPDATE FUN set SALARIO = SALARIO*1.30 where exists ( select null from FUN_2 where FUN.FUNNUM=FUN_2.FUNNUM );
+
+> SELECT FUNNUM, NOME, SALARIO from FUN;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

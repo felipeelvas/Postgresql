@@ -1,0 +1,32 @@
+// Aula 2 - Métodos de restauração
+
+# psql -U username -f backupfile.sql
+
+# psql -U postgres -p 5432 -h localhost -d meudb_admin < meudb_admin.backup
+
+# psql -h localhost -U postgres --port=5432 -f myglobals.sql 
+
+# psql -h localhost -U postgres --port=5432 --set ON_ERROR_STOP=on -f myglobals.sql
+
+# pg_restore --verbose --clean --no-acl --no-owner --host localhost -U postgres --dbname meudb_admin meudb_admin.tar
+
+=# pg_restore -h localhost -p 5432 --list -U postgres --dbname=postgres --create --verbose meudb_admin.tar
+
+# su - postgres
+$ psql
+
+=# CREATE DATABASE meudb_admin2;
+
+=# pg_restore -h localhost -p 5432 -U postgres --dbname=meudb_admin2 --section=pre-data meudb_admin.tar
+
+
+
+
+
+
+
+
+
+
+
+

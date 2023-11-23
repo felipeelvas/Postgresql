@@ -1,0 +1,149 @@
+// Aula 2 - Constraints Check
+
+=# CREATE TABLE produtos (
+	cód_prod int,
+	nome
+	text,
+	preco
+	numeric CHECK (preco > 0)
+);
+
+=# CREATE TABLE produtos2 (
+	cod_prod integer,
+	nome
+	text,
+	preco numeric CONSTRAINT chk_preco_positivo CHECK (preco > 0)
+);
+
+=# \d produtos2;
+
+=# INSERT INTO produtos2(
+	cod_prod,
+	nome,
+	preco
+) VALUES (
+	1,
+	'Biscoito',
+	'-5'
+);
+
+=# INSERT INTO produtos2(
+	cod_prod,
+	nome,
+	preco
+) VALUES (
+	1,
+	'Biscoito',
+	'5'
+);
+
+=# select * from produtos2;
+
+=# CREATE TABLE produtos3 (
+	cod_prod int,
+	nome text,
+	preco numeric CHECK (preco > 0),
+	preco_com_desconto numeric CHECK (preco_com_desconto > 0),
+	CHECK (preco > preco_com_desconto)
+);
+
+=# \d produtos3;
+
+=# INSERT INTO produtos3(
+	cod_prod,
+	nome,
+	preco,
+	preco_com_desconto
+) VALUES (
+	1,
+	'Biscoito',
+	'15',
+	'20'
+);
+
+=# INSERT INTO produtos3(
+	cod_prod,
+	nome,
+	preco,
+	preco_com_desconto
+) VALUES (
+	1,
+	'Biscoito',
+	'15',
+	'10'
+);
+
+=# select * from produtos3;
+
+=# CREATE TABLE Alunos (
+  ID_Aluno int,
+  Nome_Aluno text NOT NULL,
+  Idade numeric CHECK (Idade >= 18)
+);
+
+=# \d Alunos;
+
+=# INSERT INTO Alunos(
+	ID_Aluno,
+	Nome_Aluno,
+	Idade
+) VALUES (
+	1,
+	'Vitor',
+	'15'
+);
+
+=# INSERT INTO Alunos(
+	ID_Aluno,
+	Nome_Aluno,
+	Idade
+) VALUES (
+	1,
+	'Vitor',
+	'27'
+);
+
+=# select * from Alunos;
+
+=# CREATE TABLE Alunos2 (
+  ID_Aluno int,
+  Nome_Aluno text NOT NULL,
+  Idade_Mínima int NOT NULL CHECK (Idade_Mínima > 0),
+  Idade_Atual int,
+  CHECK (Idade_Atual >= Idade_Mínima)
+);
+
+=# \d Alunos2;
+
+=# INSERT INTO Alunos2(
+	ID_Aluno,
+	Nome_Aluno,
+	Idade_Mínima,
+	Idade_Atual
+) VALUES (
+	1,
+	'Vitor',
+	'18',
+	'27'
+);
+
+=# INSERT INTO Alunos2(
+	ID_Aluno,
+	Nome_Aluno,
+	Idade_Mínima,
+	Idade_Atual
+) VALUES (
+	1,
+	'Vitor',
+	'18',
+	'15'
+);
+
+=# select * from Alunos2;
+
+
+
+
+
+
+

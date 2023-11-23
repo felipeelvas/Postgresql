@@ -1,0 +1,21 @@
+// Aula 3 - Backup automatizado no Linux
+
+# bash pg_backup.sh
+
+# bash pg_backup_rotated.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+// Aula 3 - UNIQUE Index
+
+
+https://www.postgresql.org/docs/current/indexes-unique.html
+
+=# CREATE TABLE funcionarios (
+    funcionario_id SERIAL PRIMARY KEY,
+    primeiro_nome VARCHAR(255) NOT NULL,
+    ultimo_nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE
+);
+
+=# SELECT 
+    tablename, 
+    indexname, 
+    indexdef 
+FROM 
+    pg_indexes 
+WHERE 
+    tablename = 'funcionarios';
+
+=# \d funcionarios
+
+=# ALTER TABLE funcionarios ADD telefone VARCHAR(20);
+
+=# CREATE UNIQUE INDEX idx_funcionarios_telefone ON funcionarios(telefone);
+
+=# INSERT INTO funcionarios(primeiro_nome, ultimo_nome, email, telefone) VALUES ('John','Doe','john.doe@teste.com', '(55)-555-1234');
+
+=# INSERT INTO funcionarios(primeiro_nome, ultimo_nome, email, telefone) VALUES ('Mary','Jane','mary.jane@teste.com', '(55)-555-1234');
+
+
+=# ALTER TABLE funcionarios ADD work_phone VARCHAR(20), ADD extension VARCHAR(5);
+
+=# \d funcionarios
+
+=# CREATE UNIQUE INDEX idx_funcionarios_workphone ON funcionarios(work_phone, extension);
+
+=# INSERT INTO funcionarios(primeiro_nome, ultimo_nome, work_phone, extension) VALUES('Lily', 'Bush', '(408)-333-1234','1212');
+
+=# INSERT INTO funcionarios(primeiro_nome, ultimo_nome, work_phone, extension) VALUES('Joan', 'Doe', '(408)-333-1234','1211');
+
+=# INSERT INTO funcionarios(primeiro_nome, ultimo_nome, work_phone, extension) VALUES('Tommy', 'Stark', '(408)-333-1234','1211');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.teste.com/postgresql-indexes/postgresql-unique-index/

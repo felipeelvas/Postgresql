@@ -1,0 +1,102 @@
+// Aula 4 - Usando o comando SELECT - parte 2
+
+> SELECT SALARIO, COMISSAO from FUN;
+
+> SELECT SALARIO AS GANHOS, COMISSAO AS BÔNUS from FUN;
+
+> SELECT SALARIO AS SALARY, COMISSAO AS COMMISSION from FUN;
+
+> SELECT SALARIO AS GANHOS, COMISSAO AS BÔNUS from FUN WHERE GANHOS < 5000;
+
+> SELECT * FROM (SELECT SALARIO AS GANHOS, COMISSAO AS BÔNUS from FUN) x WHERE GANHOS < 5000;
+
+> SELECT NOME, CARGO from FUN where DEPTNUM = 10;
+
+> SELECT concat(NOME, ' WORKS AS A ',CARGO) as msg from FUN where DEPTNUM=10;
+
+https://pt.wikipedia.org/wiki/Estrutura_de_sele%C3%A7%C3%A3o
+
+https://en.wikipedia.org/wiki/Conditional_(computer_programming)#If%E2%80%93then(%E2%80%93else)
+
+> SELECT NOME,SALARIO, case when SALARIO <= 2000 then 'BAIXO' when SALARIO >= 4000 then 'ALTO' else 'MEDIO' end as RESULTADO from FUN;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

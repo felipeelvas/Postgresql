@@ -1,0 +1,31 @@
+// Aula 12 - Trabalhando com Números parte 3
+
+> SELECT avg(coalesce(COMISSAO,0)) as media_comissao from FUN where DEPTNUM=30;
+
+> SELECT avg(COMISSAO) from FUN where DEPTNUM=30;
+
+> SELECT NOME, COMISSAO from FUN where DEPTNUM=30 order by COMISSAO desc;
+
+https://pt.wikipedia.org/wiki/M%C3%A9dia_truncada
+
+> SELECT avg(SALARIO) from FUN where SALARIO not in ( (select min(SALARIO) from FUN), (select max(SALARIO) from FUN));
+
+> select * from FUN;
+
+> SELECT (sum(SALARIO)-min(SALARIO)-max(SALARIO))/(count(*)-2) from FUN;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

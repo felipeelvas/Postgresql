@@ -1,0 +1,88 @@
+// Aula 10 - Index HypoPG
+
+https://hypopg.readthedocs.io/en/rel1_stable/
+https://github.com/HypoPG/hypopg
+
+Debian/Ubuntu
+
+# apt search hypopg 
+
+# apt install postgresql-13-hypopg
+
+RHEL/CentOS:
+
+# yum search hypopg
+
+# yum install hypopg
+
+# su - postgres
+
+$ psql
+
+=# CREATE EXTENSION hypopg;
+
+=# SELECT proname FROM pg_proc WHERE proname ilike '%hyp%';
+
+=# CREATE TABLE orders AS SELECT s AS orderno, md5(random()::text) AS orderitem , now() AS order_created FROM generate_Series(1,100000000) s;
+
+=# EXPLAIN SELECT * FROM orders WHERE orderno > 80000 ORDER BY order_created DESC limit 100;
+
+=# SELECT * FROM hypopg_create_index('create index order_created_idx on orders(order_created)');
+
+=# EXPLAIN SELECT * FROM orders WHERE orderno > 80000 ORDER BY order_created DESC limit 100 ;
+
+=# EXPLAIN SELECT * FROM hypopg_drop_index(24797);
+
+=# SELECT * FROM hypopg_create_index('create index order_created_idx on orders(order_created)');
+
+=# EXPLAIN SELECT * FROM pg_size_pretty(hypopg_relation_size(24798));
+
+=# CREATE INDEX order_created_idx ON orders(order_created);
+
+=# \di+ order_created_idx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

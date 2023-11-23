@@ -1,0 +1,40 @@
+// Aula 12 - Trabalhando com Números parte 2
+
+> SELECT count(*) from FUN;
+
+> SELECT DEPTNUM, count(*) from FUN group by DEPTNUM;
+
+> SELECT DEPTNUM, COMISSAO from FUN;
+
+> SELECT count(*) from FUN group by DEPTNUM;
+
+> SELECT count(COMISSAO) from FUN;
+
+> SELECT NOME, SALARIO, sum(SALARIO) over (order by SALARIO,FUNNUM) as Total from FUN order by 2;
+
+https://pt.wikipedia.org/wiki/Moda_(estat%C3%ADstica)
+
+> SELECT SALARIO from FUN where DEPTNUM = 20 order by SALARIO;
+
+> SELECT SALARIO from ( select SALARIO, dense_rank()over( order by MODA desc) as RANK from ( select SALARIO, count(*) as MODA from FUN where DEPTNUM = 20 group by SALARIO ) x ) y where RANK = 1;
+
+> SELECT (sum( case when DEPTNUM = 10 then SALARIO end)/sum(SALARIO) )*100 as porcentagem from FUN;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+// Aula 17 - XML
+
+https://www.postgresql.org/docs/current/datatype-xml.html
+https://www.postgresql.org/docs/current/functions-xml.html
+
+=# CREATE TABLE familias (
+	id serial PRIMARY KEY, 
+	perfil xml
+);
+
+=# INSERT INTO familias(perfil) VALUES (
+	'<familia nome="Gomez">
+	<membro><relação>pai</relação><nome>Alex</nome></membro>
+	<membro><relação>mãe</relação><nome>Sonia</nome></membro>
+	<membro><relação>filho</relação><nome>Brandon</nome></membro>
+	<membro><relação>filha</relação><nome>Azaleah</nome></membro>
+	</familia>' );
+
+=# ALTER TABLE familias ADD CONSTRAINT chk_has_relação 
+	CHECK (xpath_exists('/familia/membro/relação', perfil));
+
+=# INSERT INTO familias (perfil) VALUES ('<familia nome="HsuObe"></familia>');
+
+=# SELECT familia, (xpath('/membro/relação/text()', f))[1]::text As relaçao,
+(xpath('/membro/nome/text()', f))[1]::text As nome FROM (SELECT (xpath('/familia/@nome', perfil))[1]::text As familia, unnest(xpath('/familia/membro', perfil)) As f FROM familias) x;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

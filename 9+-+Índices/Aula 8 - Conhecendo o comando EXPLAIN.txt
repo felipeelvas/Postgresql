@@ -1,0 +1,25 @@
+// Aula 8 - Conhecendo o comando EXPLAIN
+
+=# EXPLAIN SELECT * FROM categories;
+
+=# EXPLAIN SELECT title FROM categories ORDER BY description DESC;
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

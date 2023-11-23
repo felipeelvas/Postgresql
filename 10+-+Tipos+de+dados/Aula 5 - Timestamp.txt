@@ -1,0 +1,85 @@
+// Aula 5 - Timestamp
+
+https://www.postgresql.org/docs/current/datatype-datetime.html
+
+=# SELECT
+      typname,
+      typlen
+FROM
+      pg_type
+WHERE
+      typname ~ '^timestamp';
+
+=# CREATE TABLE timestamp_demo (
+    ts TIMESTAMP, 
+    tstz TIMESTAMPTZ
+);
+
+=# SET timezone = 'America/Sao_Paulo';
+
+=# SHOW TIMEZONE;
+
+=# INSERT INTO timestamp_demo (ts, tstz) VALUES ( '2016-06-22 19:10:25-07','2016-06-22 19:10:25-07');
+
+=# SELECT 
+   ts, tstz
+FROM 
+   timestamp_demo;
+
+=# SET timezone = 'America/New_York';
+
+=# SELECT
+	ts,
+	tstz
+FROM
+	timestamp_demo;
+
+=# SELECT NOW();
+
+=# SELECT CURRENT_TIMESTAMP;
+
+=# SELECT TIMEOFDAY();
+
+=# SHOW TIMEZONE;
+
+=# SELECT timezone('America/Sao_Paulo','2021-06-01 00:00');
+
+=# SELECT timezone('America/Sao_Paulo','2021-06-01 00:00'::timestamptz);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

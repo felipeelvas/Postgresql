@@ -1,0 +1,49 @@
+// Aula 2 - List e DROP Index
+
+=# SELECT
+    indexname,
+    indexdef
+FROM
+    pg_indexes
+WHERE
+    tablename = 'customer';
+
+=# SELECT
+    tablename,
+    indexname,
+    indexdef
+FROM
+    pg_indexes
+WHERE
+    tablename LIKE 'c%'
+ORDER BY
+    tablename,
+    indexname;
+
+=# \d customer
+
+=# CREATE INDEX idx_ator_primeiro_nome ON actor (first_name);
+
+=# SELECT * FROM actor
+	WHERE first_name = 'Bob';
+
+=# EXPLAIN SELECT *
+	FROM actor
+	WHERE first_name = 'Bob';
+
+=# DROP INDEX idx_ator_primeiro_nome;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+// Aula 2 - CHAR, VARCHAR e TEXT
+
+https://www.postgresql.org/docs/current/datatype-character.html
+
+=# CREATE TABLE teste_caracteres (
+	id serial PRIMARY KEY,
+	x CHAR (1),
+	y VARCHAR (10),
+	z TEXT
+);
+
+=# INSERT INTO teste_caracteres (x, y, z)
+VALUES( 'Sim','Este e um teste para o varchar','Este é um texto muito longo para a coluna de texto PostgreSQL' );
+
+=# INSERT INTO teste_caracteres (x, y, z)
+VALUES(	'Y','Este é um teste para varchar','Este é um texto muito longo para a coluna de texto PostgreSQL' );
+
+=# INSERT INTO teste_caracteres (x, y, z)
+VALUES(	'Y','varchar(n)','Este é um texto muito longo para a coluna de texto PostgreSQL'
+	);
+
+=# SELECT * FROM teste_caracteres;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

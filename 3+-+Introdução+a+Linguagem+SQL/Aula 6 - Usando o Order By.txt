@@ -1,0 +1,44 @@
+// Aula 6 - Usando o Order By
+
+> SELECT NOME, CARGO, SALARIO from FUN where DEPTNUM = 10 order by SALARIO asc;
+
+> SELECT NOME, CARGO, SALARIO from FUN where DEPTNUM = 10 order by SALARIO desc;
+
+> SELECT NOME,CARGO,SALARIO FROM FUN WHERE DEPTNUM = 10 order by 3 desc;
+
+> SELECT FUNNUM,DEPTNUM,SALARIO,NOME,CARGO from FUN order by DEPTNUM, SALARIO desc;
+
+> SELECT NOME,SALARIO,COMISSAO FROM FUN order by 3;
+
+> SELECT NOME,SALARIO,COMISSAO FROM FUN order by 3 desc;
+
+> SELECT NOME,SALARIO,COMISSAO FROM ( SELECT NOME,SALARIO,COMISSAO, case when COMISSAO is null then 0 else 1 end as is_null from FUN) x order by is_null desc,COMISSAO;
+
+> SELECT NOME,SALARIO,COMISSAO FROM ( SELECT NOME,SALARIO,COMISSAO, case when COMISSAO is null then 0 else 1 end as is_null from FUN) x order by is_null desc,COMISSAO desc;
+
+> SELECT NOME,SALARIO,COMISSAO FROM ( SELECT NOME,SALARIO,COMISSAO, case when COMISSAO is null then 0 else 1 end as is_null from FUN) x order by is_null,COMISSAO;
+
+> SELECT NOME,SALARIO,COMISSAO FROM ( SELECT NOME,SALARIO,COMISSAO, case when COMISSAO is null then 0 else 1 end as is_null from FUN) x order by is_null,COMISSAO desc;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

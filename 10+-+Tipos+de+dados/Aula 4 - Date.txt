@@ -1,0 +1,114 @@
+// Aula 4 - Date
+
+https://www.postgresql.org/docs/current/datatype-datetime.html
+
+=# CREATE TABLE documentos (
+	documento_id serial PRIMARY KEY,
+	texto_cabecalho VARCHAR (255) NOT NULL,
+	data_postagem DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
+=# INSERT INTO documentos (texto_cabecalho) VALUES('Faturamento para o cliente XPTO');
+
+=# SELECT * FROM documentos;
+
+=# CREATE TABLE funcionarios (
+	funcionario_id serial PRIMARY KEY,
+	primeiro_nome VARCHAR (255),
+	ultimo_nome VARCHAR (355),
+	nascimento_data DATE NOT NULL,
+	admissão_data DATE NOT NULL
+);
+
+=# INSERT INTO funcionarios (primeiro_nome, ultimo_nome, nascimento_data, admissão_data)
+VALUES ('Shannon','Freeman','1980-01-01','2005-01-01'),
+	   ('Sheila','Wells','1978-02-05','2003-01-01'),
+	   ('Ethel','Webb','1975-01-01','2001-01-01');
+
+=# SELECT NOW()::date;
+
+=# SELECT CURRENT_DATE;
+
+=# SELECT TO_CHAR(NOW() :: DATE, 'dd/mm/yyyy');
+
+=# SELECT TO_CHAR(NOW() :: DATE, 'dd Mon, yyyy');
+
+=# SELECT
+	primeiro_nome,
+	ultimo_nome,
+	now() - admissão_data as diff
+FROM
+	funcionarios;
+
+=# SELECT
+	funcionario_id,
+	primeiro_nome,
+	ultimo_nome,
+	AGE(nascimento_data)
+FROM
+	funcionarios;
+
+=# SELECT
+	funcionario_id,
+	primeiro_nome,
+	ultimo_nome,
+	age('2015-01-01',nascimento_data)
+FROM
+	funcionarios;
+
+=# SELECT
+	funcionario_id,
+	primeiro_nome,
+	ultimo_nome,
+	EXTRACT (YEAR FROM nascimento_data) AS YEAR,
+	EXTRACT (MONTH FROM nascimento_data) AS MONTH,
+	EXTRACT (DAY FROM nascimento_data) AS DAY
+FROM
+	funcionarios;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

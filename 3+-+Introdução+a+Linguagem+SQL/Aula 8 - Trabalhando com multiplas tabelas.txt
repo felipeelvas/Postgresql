@@ -1,0 +1,55 @@
+// Aula 8 - Trabalhando com multiplas tabelas
+
+> SELECT DEPTNUM from FUN;
+
+> SELECT DEPTNUM from AREA;
+
+> SELECT DEPTNUM from AREA where DEPTNUM not in (select DEPTNUM from FUN);
+
+> SELECT DISTINCT DEPTNUM from AREA where DEPTNUM not in (SELECT DEPTNUM from FUN);
+
+> SELECT f.NOME, a.CIDADE from FUN f, AREA a where f.DEPTNUM = 10;
+
+> SELECT f.NOME, a.CIDADE from FUN f, AREA a where f.DEPTNUM = 10 and a.DEPTNUM = f.DEPTNUM;
+
+> SELECT NOME,COMISSAO from FUN where coalesce(COMISSAO,0) < ( SELECT COMISSAO from FUN where NOME = 'WALDIR' );
+
+> SELECT NOME,COMISSAO,coalesce(COMISSAO,0) from FUN where coalesce(COMISSAO,0) < ( select COMISSAO from FUN where NOME = 'WALDIR');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

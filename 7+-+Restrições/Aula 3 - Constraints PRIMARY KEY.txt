@@ -1,0 +1,108 @@
+// Aula 3 - Constraints PRIMARY KEY
+
+=# CREATE TABLE produtos (
+	cod_prod integer UNIQUE NOT NULL,
+	nome text,
+	preco numeric
+);
+
+=# \d produtos;
+
+=# CREATE TABLE produtos61 (
+	cod_prod int PRIMARY KEY,
+	nome text,
+	preco numeric
+);
+
+=# CREATE TABLE Alunos6 (
+  ID_Aluno int PRIMARY KEY,
+  Nome_Aluno text NOT NULL,
+  CPF text,
+  Idade numeric,
+  UNIQUE (CPF)
+);
+
+=# \d Alunos6;
+
+=# CREATE TABLE Alunos7 (
+  ID_Aluno int,
+  Nome_Aluno text NOT NULL,
+  CPF text UNIQUE,
+  Idade numeric,
+  PRIMARY KEY (ID_Aluno)
+);
+
+=# \d Alunos7;
+
+=# INSERT INTO Alunos7 (
+	ID_Aluno,
+	Nome_Aluno,
+	CPF,
+	Idade
+) VALUES (
+	1,
+	'Vitor',
+	'333.333.333.33',
+	'27'
+);
+
+=# select * from Alunos7;
+
+=# CREATE TABLE Alunos8 (
+  ID_Aluno int,
+  Nome_Aluno text NOT NULL,
+  CPF text,
+  Idade numeric,
+  PRIMARY KEY (ID_Aluno, CPF)
+);
+
+=# \d Alunos8;
+
+=# INSERT INTO Alunos8 (
+	ID_Aluno,
+	Nome_Aluno,
+	CPF,
+	Idade
+) VALUES (
+	1,
+	'Vitor',
+	'333.333.333.33',
+	'27'
+);
+
+=# select * from Alunos8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

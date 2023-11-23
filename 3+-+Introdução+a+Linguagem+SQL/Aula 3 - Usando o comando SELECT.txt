@@ -1,0 +1,33 @@
+// Aula 2 - Usando o comando SELECT
+
+> SELECT * FROM AREA;
+
+> SELECT DEPTNUM,NOME,CIDADE FROM AREA;
+
+> SELECT * FROM AREA WHERE DEPTNUM = 10;
+
+> SELECT * from FUN where DEPTNUM = 10 or COMISSAO is not null or SALARIO <= 2000 and DEPTNUM = 20;
+
+> SELECT * FROM FUN where ( DEPTNUM = 10 or COMISSAO is not null or SALARIO <= 2000 ) and DEPTNUM=20;
+
+> SELECT NOME,DEPTNUM from FUN;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

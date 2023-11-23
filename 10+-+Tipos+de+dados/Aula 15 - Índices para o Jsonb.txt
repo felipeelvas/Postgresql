@@ -1,0 +1,72 @@
+// Aula 15 - Índices para o Jsonb
+
+postgres@ubuntu:~$ wget http://examples.citusdata.com/customer_reviews_nested_1998.json.gz
+
+postgres@ubuntu:~$ gzip -d customer_reviews_nested_1998.json.gz
+
+~$ psql
+
+=# CREATE DATABASE store;
+
+=# \c store ;
+
+=# CREATE TABLE reviews(content jsonb);
+
+=# copy reviews (content) FROM '/var/lib/postgresql/customer_reviews_nested_1998.json';
+
+=# CREATE INDEX ON reviews((content #>> '{product,category}'));
+
+=# EXPLAIN (ANALYZE, BUFFERS) SELECT COUNT(*) FROM reviews WHERE content #>> '{product,category}' = 'Arts & Photography';
+
+=# EXPLAIN (ANALYZE, BUFFERS) SELECT COUNT(*) FROM reviews WHERE content->'product'->>'category' = 'Arts & Photography';
+
+=# CREATE INDEX ON reviews((content->'product'->>'category'));
+
+=# EXPLAIN (ANALYZE, BUFFERS) SELECT COUNT(*) FROM reviews WHERE content->'product'->>'category' = 'Arts & Photography';
+
+=# CREATE INDEX ON reviews USING HASH((content #>> '{product,category}'));
+
+=# EXPLAIN (ANALYZE, BUFFERS) SELECT COUNT(*) FROM reviews WHERE content->'product'->>'category' = 'Arts & Photography';
+
+=# CREATE INDEX on reviews USING GIN(content);
+
+=# EXPLAIN (ANALYZE, BUFFERS) SELECT COUNT(*) FROM reviews WHERE content @> '{"product": {"category": "Arts & Photography"}}';
+
+=# CREATE INDEX ON reviews USING GIN(content jsonb_path_ops);
+
+=# EXPLAIN (ANALYZE, BUFFERS) SELECT COUNT(*) FROM reviews WHERE content @> '{"product": {"category": "Arts & Photography"}}';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

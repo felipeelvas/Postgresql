@@ -1,0 +1,85 @@
+// Aula 16 - CREATE DOMAIN e TYPE
+
+https://www.postgresql.org/docs/current/sql-createdomain.html
+https://www.postgresql.org/docs/current/sql-createtype.html
+
+=# CREATE TABLE contato_lista (
+    id SERIAL PRIMARY KEY,
+    primeiro_nome VARCHAR NOT NULL,
+    ultimo_nome VARCHAR NOT NULL,
+    email VARCHAR NOT NULL,
+    CHECK (
+        primeiro_nome !~ '\s'
+        AND ultimo_nome !~ '\s'
+    )
+);
+
+=# DROP TABLE contato_lista;
+
+=# CREATE DOMAIN nome_contato AS 
+   	VARCHAR NOT NULL CHECK (value !~ '\s');
+
+=# CREATE TABLE contato_lista (
+    id serial PRIMARY KEY,
+    primeiro_nome nome_contato,
+    ultimo_nome nome_contato,
+    email VARCHAR NOT NULL
+);
+
+=# INSERT INTO contato_lista (primeiro_nome, ultimo_nome, email)
+VALUES('Jame V','Doe','jame.doe@teste.com');
+
+=# INSERT INTO contato_lista (primeiro_nome, ultimo_nome, email)
+VALUES('Joao','Pedro','joao.pedro@teste.com');
+
+=# \dD
+
+=# SELECT typname 
+FROM pg_catalog.pg_type 
+  JOIN pg_catalog.pg_namespace 
+  	ON pg_namespace.oid = pg_type.typnamespace 
+WHERE 
+	typtype = 'd' and nspname = 'public';
+
+=# \c dvdrental;
+
+=# CREATE TYPE film_summary AS (
+    film_id INT,
+    title VARCHAR,
+    release_year SMALLINT
+);  
+
+=# CREATE OR REPLACE FUNCTION get_film_summary (f_id INT) 
+    RETURNS film_summary AS 
+$$ 
+SELECT
+    film_id,
+    title,
+    release_year
+FROM
+    film
+WHERE
+    film_id = f_id ; 
+$$ 
+LANGUAGE SQL;
+
+=# SELECT * FROM get_film_summary (10);
+
+=# \dT
+
+=# DROP TYPE film_summary CASCADE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
