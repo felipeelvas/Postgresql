@@ -1,0 +1,100 @@
+// Aula 8 - CASE
+
+https://www.postgresql.org/docs/13/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS
+
+=# SELECT title,
+       length,
+       CASE
+           WHEN length> 0
+                AND length <= 50 THEN 'Curto'
+           WHEN length > 50
+                AND length <= 120 THEN 'Medio'
+           WHEN length> 120 THEN 'Longo'
+       END duration
+FROM film
+ORDER BY title;
+
+=# SELECT
+	SUM (CASE 
+		WHEN rental_rate = 0.99 THEN 1
+	       ELSE 0
+	      END
+	) AS "Econômico",
+	SUM (
+		CASE
+		WHEN rental_rate = 2.99 THEN 1
+		ELSE 0
+		END
+	) AS "Popular",
+	SUM (
+		CASE
+		WHEN rental_rate = 4.99 THEN 1
+		ELSE 0
+		END
+	) AS "Premium"
+FROM
+	film;
+
+=# SELECT title,
+       rating,
+       CASE rating
+           WHEN 'G' THEN 'Todas as idades'
+           WHEN 'PG' THEN 'Acompanhamento parental sugerida'
+           WHEN 'PG-13' THEN 'Não indicado para crianças'
+           WHEN 'R' THEN 'Restrito'
+           WHEN 'NC-17' THEN 'Somente para maiores'
+       END rating_description
+FROM film
+ORDER BY title;
+
+=# SELECT
+       SUM(CASE rating
+             WHEN 'G' THEN 1 
+		     ELSE 0 
+		   END) "Todas as idades",
+       SUM(CASE rating
+             WHEN 'PG' THEN 1 
+		     ELSE 0 
+		   END) "Acompanhamento parental sugerida",
+       SUM(CASE rating
+             WHEN 'PG-13' THEN 1 
+		     ELSE 0 
+		   END) "Não indicado para crianças",
+       SUM(CASE rating
+             WHEN 'R' THEN 1 
+		     ELSE 0 
+		   END) "Restrito",
+       SUM(CASE rating
+             WHEN 'NC-17' THEN 1 
+		     ELSE 0 
+		   END) "Somente para maiores"
+FROM film;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

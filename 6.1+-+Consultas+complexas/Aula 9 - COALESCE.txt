@@ -1,0 +1,86 @@
+// Aula 9 - COALESCE
+
+https://www.postgresql.org/docs/13/functions-conditional.html#FUNCTIONS-COALESCE-NVL-IFNULL
+
+=# SELECT
+	COALESCE (1, 2);
+
+=# SELECT
+	COALESCE (NULL, 2 , 1);
+
+=# \c teste
+
+=# SELECT COALESCE (content, LEFT(CONTENT, 150)) FROM posts;
+
+=# CREATE TABLE itens (
+	ID serial PRIMARY KEY,
+	produto VARCHAR (100) NOT NULL,
+	preço NUMERIC NOT NULL,
+	desconto NUMERIC
+);
+
+=# INSERT INTO itens (produto, preço, desconto)
+VALUES ('A', 1000 ,10),
+	('B', 1500 ,20),
+	('C', 800 ,5),
+	('D', 500, NULL);
+
+=# SELECT
+	produto,
+	(preço - desconto) AS preço_total
+FROM
+	itens;
+
+=# SELECT
+	produto,
+	(preço - COALESCE(desconto,0)) AS preço_total
+FROM
+	itens;
+
+=# SELECT produto, (
+		preço - CASE
+		WHEN desconto IS NULL THEN
+			0
+		ELSE
+			desconto
+		END
+	) AS preço_total
+FROM itens;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

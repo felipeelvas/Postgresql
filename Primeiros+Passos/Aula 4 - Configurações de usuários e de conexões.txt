@@ -1,0 +1,36 @@
+// Aula 3 - Configurações de usuários e de conexões
+
+$ sudo su - postgres
+$ psql
+
+postgres=# select current_user;
+
+postgres=# SELECT current_database();
+
+postgres=# SELECT version();
+
+# adduser vitor
+# passwd vitor
+# su - postgres
+$ psql template1
+
+template1=# CREATE USER vitor WITH PASSWORD '123456';
+template1=# CREATE DATABASE teste;
+template1=# GRANT ALL PRIVILEGES ON DATABASE teste to vitor;
+template1=# \q
+
+$ su - vitor
+$ psql -d teste -U vitor
+
+=> select current_user;
+
+
+
+
+
+
+
+
+
+
+

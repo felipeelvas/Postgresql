@@ -1,0 +1,48 @@
+// Aula 2 - Usando o distinct
+
+https://www.postgresql.org/docs/current/sql-select.html#SQL-DISTINCT 
+
+=# select coalesce(NULL,'test');
+
+=# select coalesce('laranja','test');
+
+=# \pset null (NULL)
+
+=# select description,coalesce(description,'No description') from categories order by 1;
+
+=# select coalesce(description,'No description') as description from categories order by 1;
+
+=# select coalesce(description,'No description') as Description from categories order by 1;
+
+=# select coalesce(description,'No description') as "Description" from categories order by 1;
+
+=# select distinct coalesce(description,'No description') as description from categories order by 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

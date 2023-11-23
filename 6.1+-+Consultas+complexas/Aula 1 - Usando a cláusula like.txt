@@ -1,0 +1,66 @@
+// Aula 1 - Usando a cláusula like
+
+=# select * from categories where id > 2 order by title;
+
+=# select * from categories where title like 'a%';
+
+=# select * from categories where title like '%e';
+
+=# select * from categories where title like '%al%';
+
+=# select * from categories where title like 'A%';
+
+=# select upper('laranja');
+
+=# select * from categories where upper(title) like 'A%';
+
+=# select * from categories where title ilike 'A%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

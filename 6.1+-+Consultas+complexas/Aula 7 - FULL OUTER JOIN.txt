@@ -1,0 +1,83 @@
+// Aula 7 - FULL OUTER JOIN
+
+https://commons.wikimedia.org/wiki/File:SQL_Join_-_05_A_Full_Join_B.svg#/media/File:SQL_Join_-_05_A_Full_Join_B.svg
+
+=# CREATE TABLE tags (
+	id int GENERATED ALWAYS AS IDENTITY,
+	tag text, 
+	parent int,
+	PRIMARY KEY( id )
+);
+
+=# CREATE TABLE j_posts_tags (
+	tag_id int,
+	post_id int,
+	PRIMARY KEY( post_id )
+);
+
+# \d tags
+
+# \d j_posts_tags 
+
+=# insert into tags (tag,parent) values ('frutas',NULL);
+
+=# insert into tags (tag,parent) values ('vegetais',NULL);
+
+=# insert into j_posts_tags values (1,2),(1,3);
+
+=# select * from tags;
+
+=# select * from j_posts_tags;
+
+=# select jpt.*,t.*,p.title from j_posts_tags jpt inner join tags t on jpt.tag_id=t.id inner join posts p on jpt.post_id = p.id;
+
+=# select jpt.*,t.*,p.title from j_posts_tags jpt full outer join tags t on jpt.tag_id=t.id full outer join posts p on jpt.post_id = p.id;
+
+=# select jpt.*,t.*,p.title from j_posts_tags jpt cross join tags t cross join posts p;
+
+=# insert into posts (title,content,author,category) values ('minha nova laranja','este é o meu post na minha nova laranja',1,11);
+
+=# select distinct p1.title,p1.author,p1.category from posts p1 where p1.author=1;
+
+=# select distinct p2.title,p2.author,p2.category from posts p2 where p2.author=2;
+
+=# select distinct p2.title,p2.author,p2.category from posts p1,posts p2 where p1.category=p2.category and p1.author<>p2.author and p1.author=1 and p2.author=2;
+
+=# select distinct p2.title,p2.author,p2.category from posts p1 inner join posts p2 on ( p1.category=p2.category and p1.author<>p2.author) where p1.author=1 and p2.author=2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+// Aula 6 - LEFT e RIGHT JOIN
+
+https://commons.wikimedia.org/wiki/File:SQL_Join_-_01_A_Left_Join_B.svg#/media/File:SQL_Join_-_01_A_Left_Join_B.svg
+
+=# select c.*,p.category,p.title from categories c left join posts p on c.id=p.category;
+
+=# select * from categories c where c.id not in (select category from posts);
+
+=# select * from categories c where not exists (select 1 from posts where category=c.id);
+
+=# select c.*,p.category from categories c left join posts p on p.category=c.id;
+
+=# select c.* from categories c left join posts p on p.category=c.id where p.category is null;
+
+https://commons.wikimedia.org/wiki/File:SQL_Join_-_03_A_Right_Join_B.svg#/media/File:SQL_Join_-_03_A_Right_Join_B.svg
+
+=# select c.*,p.category,p.title from posts p right join categories c on c.id=p.category;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

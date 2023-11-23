@@ -1,0 +1,57 @@
+// Aula 6 - O comando psql
+
+# psql --help
+
+# psql -h hostname -p 5432 -d dbname -U username -W
+
+# psql -h 127.0.0.1 -p 5432 -d teste -U vitor -W
+
+# sudo su - postgres
+# psql -c "SELECT current_time"
+
+# sudo su - postgres
+$ psql
+
+postgres=# \h DELETE
+
+=#  ALTER USER usuario PASSWORD 'suasenhaaqui'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

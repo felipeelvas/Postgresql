@@ -1,0 +1,35 @@
+// Aula 4 - Comandos Join
+
+=# select c.id,c.title,p.id,p.category,p.title from categories c,posts p;
+
+https://commons.wikimedia.org/wiki/Category:SQL_Joins#/media/File:SQL_Join_-_08_A_Cross_Join_B.svg
+
+=# select c.id,c.title,p.id,p.category,p.title from categories c CROSS JOIN posts p;
+
+INNER JOIN
+
+https://commons.wikimedia.org/wiki/File:SQL_Join_-_07_A_Inner_Join_B.svg#/media/File:SQL_Join_-_07_A_Inner_Join_B.svg
+
+=# select c.id,c.title,p.id,p.category,p.title from categories c,posts p where c.id=p.category;
+
+=# select c.id,c.title,p.id,p.category,p.title from categories c inner join posts p on c.id=p.category;
+
+=# select distinct p.id,p.title,p.content,p.author,p.category from categories c inner join posts p on c.id=p.category where c.title='laranja';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

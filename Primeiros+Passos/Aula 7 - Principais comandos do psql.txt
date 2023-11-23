@@ -1,0 +1,82 @@
+// Aula 8 - Principais comandos do psql
+
+# psql -h host -d database -U user -W
+
+# psql -d postgres -h localhost -U postgres -W
+
+# psql -h localhost -U postgres -W "dbname=postgres sslmode=require"
+
+=# \l
+
+=# \c teste
+
+=# \dt
+
+=# \d alunos
+
+=# \dn
+
+=# \df
+
+=# \dv
+
+=# \du
+
+=# \s
+
+=# \s historico
+
+=# exit
+
+# ls
+
+=# \e 
+
+SELECT version();
+
+=# \q 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
